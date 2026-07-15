@@ -10,6 +10,8 @@
             padding: 0;
             height: 100%;
             font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
         .container {
             display: flex;
@@ -17,16 +19,19 @@
         }
         .left {
             width: 80%;
-            padding: 20px;
-            background-color: #ffffff;
+            padding: 24px;
+            background-color: #111827;
             box-sizing: border-box;
             overflow-y: auto;
-            border-right: 2px solid #ddd;
+            border-right: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
         .right {
             width: 20%;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #0f172a;
             box-sizing: border-box;
             overflow-y: auto;
             display: flex;
@@ -34,24 +39,30 @@
         }
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 12px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+        input::placeholder {
+            color: #94a3b8;
         }
         button {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             cursor: pointer;
-            border: 1px solid #ccc;
-            background-color: #f0f0f0;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: #e2e8f0;
             border-radius: 4px;
             font-weight: 500;
         }
         button:hover {
-            background-color: #e0e0e0;
+            background-color: #334155;
         }
         button.primary {
             background-color: #4CAF50;
@@ -60,6 +71,26 @@
             font-weight: bold;
         }
         button.primary:hover {
+            background-color: #45a049;
+        }
+        #buyPut,
+        #sellPut {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        #buyPut:hover,
+        #sellPut:hover {
+            background-color: #da190b;
+        }
+        #buyCall,
+        #sellCall {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        #buyCall:hover,
+        #sellCall:hover {
             background-color: #45a049;
         }
         button.danger {
@@ -76,44 +107,99 @@
         h4 {
             margin-bottom: 10px;
         }
-        .strategy-list {
-            flex: 1;
-            overflow-y: auto;
-        }
-        .strategy-item {
-            background-color: #fff;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 4px;
-            border-left: 4px solid #4CAF50;
+        .strategy-summary {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background-color: #0f172a;
+            border: 1px solid #334155;
         }
-        .strategy-item.sell {
-            border-left-color: #f44336;
+        .strategy-summary h3 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: 0.02em;
         }
-        .strategy-info {
-            flex: 1;
-        }
-        .strategy-info-main {
-            font-weight: bold;
+        .strategy-summary span {
+            color: #cbd5e1;
             font-size: 14px;
         }
-        .strategy-info-detail {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
+        .strategy-list {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 2px;
+        }
+        .strategy-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #334155;
+            background-color: #111827;
+        }
+        .strategy-table th,
+        .strategy-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #334155;
+            text-align: left;
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+        .strategy-table th {
+            background-color: #0f172a;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        .strategy-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .strategy-table td.actions {
+            text-align: right;
+            width: 70px;
+        }
+        .strategy-table tbody tr.put {
+            background-color: rgba(244, 67, 54, 0.24);
+        }
+        .strategy-table tbody tr.call {
+            background-color: rgba(76, 175, 80, 0.24);
+        }
+        .strategy-table input,
+        .strategy-table select {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 13px;
+            background-color: #1f2937;
+            color: #e2e8f0;
+        }
+        .strategy-table select {
+            background-color: #111827;
         }
         .strategy-remove {
-            background-color: #f0f0f0;
-            color: #f44336;
-            border: 1px solid #f44336;
-            padding: 4px 8px;
+            background-color: transparent;
+            color: #ef4444;
+            border: 1px solid #ef4444;
+            padding: 6px 10px;
             font-size: 12px;
             cursor: pointer;
-            border-radius: 3px;
-            margin-left: 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: nowrap;
+        }
+        .strategy-remove:hover {
+            background-color: #ef4444;
+            color: white;
+        }
+        .empty-state {
+            text-align: center;
+            color: #475569;
+            padding: 20px;
+            font-size: 14px;
+        }
+        .strategy-remove:hover {
+            background-color: #ef4444;
+            color: white;
         }
         .strategy-remove:hover {
             background-color: #f44336;
@@ -129,9 +215,9 @@
             flex-shrink: 0;
         }
         .url-box {
-            background-color: #fff;
+            background-color: #1e293b;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #334155;
             border-radius: 4px;
             margin-bottom: 20px;
             max-height: 150px;
@@ -139,13 +225,19 @@
             font-size: 11px;
             word-break: break-all;
             font-family: monospace;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left">
-            <h2>Strategy Builder</h2>
+            <div class="strategy-summary">
+                <div>
+                    <h3>Riepilogo Strategia</h3>
+                    <span id="strategy-summary">Nessuna opzione aggiunta</span>
+                </div>
+            </div>
             <div id="strategy-display" class="strategy-list">
                 <div class="empty-state">Nessuna opzione aggiunta. Usa i controlli a destra per iniziare.</div>
             </div>
@@ -153,8 +245,11 @@
         <div class="right">
             <div class="controls">
                 <h3>Aggiungi Opzione</h3>
-                <input type="text" id="ticker" placeholder="Ticker (es. AAPL)">
+                <input type="text" id="ticker" value="XSP" placeholder="Ticker (es. AAPL)">
                 <input type="text" id="expiration" placeholder="Scadenza YYMMDD (es. 260430)">
+                
+                <input type="text" id="strike" placeholder="Strike (es. 150)">
+                <input type="text" id="price" placeholder="Prezzo (es. 5.00) - opzionale">
                 
                 <div style="display: flex; gap: 5px; margin-bottom: 10px;">
                     <button id="buyPut" style="flex: 1;">Compra PUT</button>
@@ -164,9 +259,6 @@
                     <button id="buyCall" style="flex: 1;">Compra CALL</button>
                     <button id="sellCall" style="flex: 1;">Vendi CALL</button>
                 </div>
-                
-                <input type="text" id="strike" placeholder="Strike (es. 150)">
-                <input type="text" id="price" placeholder="Prezzo (es. 5.00) - opzionale">
                 
                 <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
                 
@@ -246,31 +338,59 @@
         function updateDisplay() {
             const display = document.getElementById('strategy-display');
             const urlPreview = document.getElementById('url-preview');
+            const summary = document.getElementById('strategy-summary');
 
             if (optionsList.length === 0) {
                 display.innerHTML = '<div class="empty-state">Nessuna opzione aggiunta. Usa i controlli a destra per iniziare.</div>';
+                summary.textContent = 'Nessuna opzione aggiunta';
                 urlPreview.textContent = '-';
                 document.getElementById('openOptionStrat').disabled = true;
                 return;
             }
 
+            summary.textContent = `Opzioni totali: ${optionsList.length}`;
             document.getElementById('openOptionStrat').disabled = false;
 
-            // Aggiorna visualizzazione lista
-            display.innerHTML = optionsList.map((option, index) => {
-                const priceText = option.price ? ` @ $${option.price}` : '';
-                const isSell = option.action === 'Vendi';
-                const className = isSell ? 'strategy-item sell' : 'strategy-item';
-                return `
-                    <div class="${className}">
-                        <div class="strategy-info">
-                            <div class="strategy-info-main">${option.action} ${option.type} ${option.ticker}</div>
-                            <div class="strategy-info-detail">Strike: ${option.strike} | Scad: ${option.expiration}${priceText}</div>
-                        </div>
-                        <button class="strategy-remove" onclick="removeOption(${index})">×</button>
-                    </div>
-                `;
-            }).join('');
+            // Aggiorna visualizzazione lista con una tabella semplice e campi modificabili
+            display.innerHTML = `
+                <table class="strategy-table">
+                    <thead>
+                        <tr>
+                            <th>Operazione</th>
+                            <th>Ticker</th>
+                            <th>Scadenza</th>
+                            <th>Strike</th>
+                            <th>Prezzo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${optionsList.map((option, index) => {
+                            const priceValue = option.price ? option.price : '';
+                            const rowClass = option.type === 'PUT' ? 'put' : 'call';
+                            return `
+                                <tr class="${rowClass}">
+                                    <td>
+                                        <select onchange="updateOptionField(${index}, 'action', this.value)">
+                                            <option value="Compra" ${option.action === 'Compra' ? 'selected' : ''}>Compra</option>
+                                            <option value="Vendi" ${option.action === 'Vendi' ? 'selected' : ''}>Vendi</option>
+                                        </select>
+                                        <select onchange="updateOptionField(${index}, 'type', this.value)" style="margin-top: 6px;">
+                                            <option value="PUT" ${option.type === 'PUT' ? 'selected' : ''}>PUT</option>
+                                            <option value="CALL" ${option.type === 'CALL' ? 'selected' : ''}>CALL</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" value="${option.ticker}" onchange="updateOptionField(${index}, 'ticker', this.value)"></td>
+                                    <td><input type="text" value="${option.expiration}" onchange="updateOptionField(${index}, 'expiration', this.value)"></td>
+                                    <td><input type="text" value="${option.strike}" onchange="updateOptionField(${index}, 'strike', this.value)"></td>
+                                    <td><input type="text" value="${priceValue}" onchange="updateOptionField(${index}, 'price', this.value)"></td>
+                                    <td class="actions"><button class="strategy-remove" onclick="removeOption(${index})">×</button></td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
 
             // Aggiorna URL preview
             const url = buildOptionStratURL();
@@ -292,6 +412,15 @@
             return `https://optionstrat.com/build/custom/${ticker}/${encodedOptionsString}`;
         }
 
+        function updateOptionField(index, field, value) {
+            const option = optionsList[index];
+            if (!option) return;
+
+            const normalizedValue = field === 'ticker' ? value.toUpperCase() : value;
+            option[field] = normalizedValue;
+            updateDisplay();
+        }
+
         function openOptionStrat() {
             if (optionsList.length === 0) {
                 alert('Aggiungi almeno un\'opzione prima di aprire OptionStrat');
@@ -301,9 +430,18 @@
             window.open(url, '_blank');
         }
 
-        // Aggiungi focus al campo strike quando la pagina carica
+        function getTodayExpiration() {
+            const today = new Date();
+            const year = String(today.getFullYear()).slice(-2);
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}${month}${day}`;
+        }
+
+        // Aggiungi focus e scadenza di default quando la pagina carica
         window.addEventListener('load', () => {
             document.getElementById('ticker').focus();
+            document.getElementById('expiration').value = getTodayExpiration();
         });
 
         // Permetti di aggiungere opzione col tasto Enter
