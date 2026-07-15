@@ -93,6 +93,22 @@ function loadPresetStrategy(presetKey) {
             { action: 'Vendi', type: 'PUT', strike: centerStrike },
             { action: 'Vendi', type: 'CALL', strike: centerStrike },
             { action: 'Compra', type: 'CALL', strike: centerStrike + 20 }
+        ],
+        bullPutSpread: [
+            { action: 'Compra', type: 'PUT', strike: centerStrike - 20 },
+            { action: 'Vendi', type: 'PUT', strike: centerStrike }
+        ],
+        bearCallSpread: [
+            { action: 'Compra', type: 'CALL', strike: centerStrike + 20 },
+            { action: 'Vendi', type: 'CALL', strike: centerStrike }
+        ],
+        bullCallSpread: [
+            { action: 'Compra', type: 'CALL', strike: centerStrike - 20 },
+            { action: 'Vendi', type: 'CALL', strike: centerStrike }
+        ],
+        bearPutSpread: [
+            { action: 'Compra', type: 'PUT', strike: centerStrike + 20 },
+            { action: 'Vendi', type: 'PUT', strike: centerStrike }
         ]
     };
 
