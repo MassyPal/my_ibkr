@@ -1,6 +1,6 @@
-# my_ibkr
+# optionstudy
 
-IBKR mediante Gateway
+Interfaccia per OptionStrat
 
 ## OptionStrat Strategy Builder
 
